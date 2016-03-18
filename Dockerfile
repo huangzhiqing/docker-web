@@ -1,4 +1,4 @@
-FROM comm/tomcat7
+FROM  192.168.1.110:5000/tomcat:7
 
 MAINTAINER "huangzq@asiainfo.com"
 
@@ -12,11 +12,11 @@ ADD pom.xml /code/pom.xml
 RUN mvn clean install package
 
 # clean maven rep
-rm -rf /usr/.m2/repository
+RUN rm -rf /usr/.m2/repository
 
 RUN yes|cp target/*.war $CATALINA_HOME/webapps
 
-rm -rf /code
+RUN rm -rf /code
 
 
 
